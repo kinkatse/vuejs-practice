@@ -17,7 +17,8 @@ const app = Vue.createApp({
         return {
             title: 'Nuzlocke S1',
             host: 'Kin Ka',
-            year: 2020
+            year: 2020,
+            visible: true
         }
     },
     // methods is a property which can access all the variables
@@ -33,6 +34,9 @@ const app = Vue.createApp({
         resetToDefault(season) {
             this.title = this.title.slice(0, 10) + season
             this.year = 2020
+        },
+        toggleOptions() {
+            this.visible = !this.visible
         }
     }
 })

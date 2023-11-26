@@ -12,13 +12,22 @@
     <div id="app">
         <h2>{{ title }} - {{ host }} - {{ year }} </h2>
 
-        <!-- v-on:click is considered a 'directive' which can still access the -->
-        <!-- variables despite no {{}}, and is a click event listener -->
-        <button v-on:click="year += 1">Increment Year</button>
-        <button v-on:click="year--">Decrement Year</button>
+        <!-- v-on:click is considered a 'directive' which can still access the
+        variables despite no {{}}, and is a click event listener -->
+        <button v-on:click="year += 1" v-if="visible">Increment Year</button>
+        <button v-on:click="year--" v-if="visible">Decrement Year</button>
         <!-- v-on:click is the same as @click (syntactic sugar) -->
-        <div @click="nextSeason">Next Season</div>
-        <div @click="resetToDefault(1)">Reset Season</div>
+        <div @click="nextSeason" v-if="visible">Next Season</div>
+        <div @click="resetToDefault(1)" v-if="visible">Reset Season</div>
+
+        <button @click="toggleOptions" v-if="visible">Hide Options</button>
+        <!-- <button @click="toggleOptions" v-if="!visible">Show Options</button> -->
+        <button @click="toggleOptions" v-else="visible">Show Options</button>
+        <!-- <button @click="toggleOptions">Toggle Options</button> -->
+
+        <h3 v-show="visible">Showing Options</h3>
+        <!-- difference between v-show and v-if is that v-if removes from
+        DOM whereas v-show changes display to none or block -->
     </div>
 
     <script src="app.js"></script>
