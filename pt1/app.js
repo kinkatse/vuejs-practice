@@ -12,13 +12,16 @@ const app = Vue.createApp({
     // Data function like we are in a class definition
     // Properties we make inside this data object will
     // be accessible within the template element like:
-    // {{ title }}    Think of this as a state variable
+    // {{ title }} Think of this as a state variable
+    // (referred to as proxy?)
     data() {
         return {
             title: 'Nuzlocke S1',
             host: 'Kin Ka',
             year: 2020,
-            visible: true
+            visible: true,
+            x: 0,
+            y: 0
         }
     },
     // methods is a property which can access all the variables
@@ -37,6 +40,24 @@ const app = Vue.createApp({
         },
         toggleOptions() {
             this.visible = !this.visible
+        },
+        mouseoverHandler(e, arg) {
+            console.log(e)
+            console.log(e.type)
+            console.log(arg)
+        },
+        mouseleaveHandler(e) {
+            console.log(e)
+            console.log(e.type)
+        },
+        doubleclickHandler(e) {
+            console.log(e)
+            console.log(e.type)
+        },
+        mousemoveHandler(e) {
+            console.log(e.type)
+            this.x = e.offsetX
+            this.y = e.offsetY
         }
     }
 })
