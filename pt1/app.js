@@ -62,6 +62,12 @@ const app = Vue.createApp({
             this.x = e.offsetX
             this.y = e.offsetY
         }
+    },
+    // Computed property is a property that depends on other data
+    computed: {
+        filteredRounds() {
+            return this.rounds.filter((round) => round.isFav)
+        }
     }
 })
 

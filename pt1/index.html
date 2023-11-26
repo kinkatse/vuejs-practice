@@ -13,7 +13,7 @@
     <div id="app">
         <ul>
             <!-- binded class attribute takes in key value pairs for all classes this element should have -->
-            <li v-for="round in rounds" :class="{ fav: round.isFav, host: round.host === 'Kinka' }">
+            <li v-for="round in filteredRounds" :class="{ fav: round.isFav, host: round.host === 'Kinka' }">
                 <h2>{{ round.title }} - {{ round.host }} - {{ round.year }} </h2>
         
                 <!-- v-on:click is considered a 'directive' which can still access the
