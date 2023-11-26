@@ -11,27 +11,41 @@
     <h1>Hello Vue :O</h1>
 
     <div id="app">
-        <h2>{{ title }} - {{ host }} - {{ year }} </h2>
+        <ul>
+            <!-- binded class attribute takes in key value pairs for all classes this element should have -->
+            <li v-for="round in rounds" :class="{ fav: round.isFav, host: round.host === 'Kinka' }">
+                <h2>{{ round.title }} - {{ round.host }} - {{ round.year }} </h2>
+        
+                <!-- v-on:click is considered a 'directive' which can still access the
+                variables despite no {{}}, and is a click event listener -->
+                <button v-on:click="round.year += 1" v-if="visible">Increment Year</button>
+                <button v-on:click="round.year--" v-if="visible">Decrement Year</button>
+                <!-- v-on:click is the same as @click (syntactic sugar) -->
+                <div @click="nextSeason" v-if="visible">Next Season</div>
+                <div @click="resetToDefault(1)" v-if="visible">Reset Season</div>
+        
+                <button @click="toggleOptions" v-if="visible">Hide Options</button>
+                <!-- <button @click="toggleOptions" v-if="!visible">Show Options</button> -->
+                <button @click="toggleOptions" v-else="visible">Show Options</button>
+                <!-- <button @click="toggleOptions">Toggle Options</button> -->
+        
+                <h3 v-show="visible">Showing Options</h3>
+                <!-- difference between v-show and v-if is that v-if removes from
+                DOM whereas v-show changes display to none or block -->
+        
+        
+                <br />
+            </li>
+        </ul>
 
-        <!-- v-on:click is considered a 'directive' which can still access the
-        variables despite no {{}}, and is a click event listener -->
-        <button v-on:click="year += 1" v-if="visible">Increment Year</button>
-        <button v-on:click="year--" v-if="visible">Decrement Year</button>
-        <!-- v-on:click is the same as @click (syntactic sugar) -->
-        <div @click="nextSeason" v-if="visible">Next Season</div>
-        <div @click="resetToDefault(1)" v-if="visible">Reset Season</div>
-
-        <button @click="toggleOptions" v-if="visible">Hide Options</button>
-        <!-- <button @click="toggleOptions" v-if="!visible">Show Options</button> -->
-        <button @click="toggleOptions" v-else="visible">Show Options</button>
-        <!-- <button @click="toggleOptions">Toggle Options</button> -->
-
-        <h3 v-show="visible">Showing Options</h3>
-        <!-- difference between v-show and v-if is that v-if removes from
-        DOM whereas v-show changes display to none or block -->
-
-
-        <br />
+        <!-- attribute binding, makes it dynamic to look for the variable -->
+        <!-- I think the way this works is that values are only dynamic inside
+        of a Vue directive, which these normal attributes like href or alt or src
+        won't recognize the Vue data variables. So these are the default
+        settings which we need to bind the context of the data to, to be dynamic -->
+        <!-- <a v-bind:href="url">Prisma Studio</a> -->
+        <!-- Shortcut is just : (syntactic sugar) -->
+        <a :href="url">Prisma Studio</a>
 
         <h1>Box Demonstration</h1>
 
@@ -43,6 +57,7 @@
         <div class="box" @mouseleave="mouseleaveHandler">mouseleave</div>
         <div class="box" @dblclick="doubleclickHandler">double click</div>
         <div class="box" @mousemove="mousemoveHandler">position - {{ x }} - {{ y }} </div>
+
     </div>
 
     <script src="app.js"></script>

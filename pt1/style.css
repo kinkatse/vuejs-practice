@@ -6,3 +6,11 @@
     margin: 20px;
     display: inline-block;
 }
+
+.host {
+    color: yellow;
+}
+
+.fav {
+    background-color: green;
+}

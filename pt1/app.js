@@ -16,10 +16,13 @@ const app = Vue.createApp({
     // (referred to as proxy?)
     data() {
         return {
-            title: 'Nuzlocke S1',
-            host: 'Kin Ka',
-            year: 2020,
-            visible: true,
+            url: "https://www.prisma.io/studio",
+            visible: false,
+            rounds: [
+                { title: 'Nuzlocke S1', host: 'Kinka', year: 2020, isFav: true },
+                { title: 'Phobia S1', host: 'Brick', year: 2020, isFav: false },
+                { title: 'Desire S1', host: 'Tommy', year: 2020, isFav: true }
+            ],
             x: 0,
             y: 0
         }
