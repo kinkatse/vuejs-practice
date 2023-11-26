@@ -2,9 +2,12 @@
   <h1>{{ title }}</h1>
   <input type="text" ref="name">
   <button @click="handleClick">click me</button>
+  <Modal />
 </template>
 
 <script>
+import Modal from './components/Modal.vue'
+
 export default {
   name: 'App',
   data() {
@@ -19,18 +22,14 @@ export default {
       console.log(this.$refs.name)
       this.$refs.name.focus()
     }
-  }
+  },
+  components: { Modal }
 }
 </script>
 
 // This is global styling
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: black;
-  margin-top: 60px;
-}
+<style scoped>
+  h1 {
+    color: green;
+  }
 </style>
