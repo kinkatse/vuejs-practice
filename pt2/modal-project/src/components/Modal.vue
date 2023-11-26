@@ -1,18 +1,28 @@
 <template>
     <div class="backdrop">
-        <div class="modal">
-            <h1>Modal Title</h1>
-            <p>modal content</p>
+        <!-- The below errored out because of :class needing "" around it so I need single quotes -->
+        <!-- <div class="modal" :class="{ day: theme === "day", night: theme === "night"}"> -->
+        <div class="modal" :class="{ day: theme === 'day', night: theme === 'night'}">
+            <h1>{{ header }}</h1>
+            <p>{{ text }}</p>
+            <h3>{{ list[0] }}</h3>
+            <h3>{{ list[1] }}</h3>
+            <button @click="toggleTheme">Change Theme</button>
         </div>
     </div>
 </template>
+
+<script>
+export default {
+    props: ['header', 'text', 'list', 'theme', 'toggleTheme']
+}
+</script>
 
 <style scoped>
     .modal {
         width: 400px;
         padding: 20px;
         margin: 100px auto;
-        background: white;
         border-radius: 10px;
     }
     .backdrop {
@@ -24,5 +34,11 @@
     }
     h1 {
         color: blue;
+    }
+    .day {
+        background: white;
+    }
+    .night {
+        background: rgb(57, 57, 57);
     }
 </style>
