@@ -10,7 +10,15 @@
     <h1>Hello Vue :O</h1>
 
     <div id="app">
-        <h2>{{ title }} - {{ author }} - {{ age }} </h2>
+        <h2>{{ title }} - {{ host }} - {{ year }} </h2>
+
+        <!-- v-on:click is considered a 'directive' which can still access the -->
+        <!-- variables despite no {{}}, and is a click event listener -->
+        <button v-on:click="year += 1">Increment Year</button>
+        <button v-on:click="year--">Decrement Year</button>
+        <!-- v-on:click is the same as @click (syntactic sugar) -->
+        <div @click="nextSeason">Next Season</div>
+        <div @click="resetToDefault(1)">Reset Season</div>
     </div>
 
     <script src="app.js"></script>
