@@ -4,7 +4,22 @@ console.log("Hello")
 const app = Vue.createApp({
     // Root component here
     // Set up data and functions to react to data
-    template: '<h2> I am the template </h2>'
+
+    // Tedious to create a template here so we can
+    // instead create it directly on the DOM
+    // template: '<h2> I am the template </h2>'
+
+    // Data function like we are in a class definition
+    // Properties we make inside this data object will
+    // be accessible within the template element like:
+    // {{ title }}
+    data() {
+        return {
+            title: 'Nuzlocke',
+            author: 'Kin Ka',
+            age: 27
+        }
+    }
 })
 
 // This is where the app is mounted on to the DOM, similar to when
