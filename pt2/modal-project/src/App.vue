@@ -2,8 +2,18 @@
   <h1>{{ title }}</h1>
   <input type="text" ref="name">
   <button @click="handleClick">click me</button>
-  <!-- <Modal header="Sign Up" text="Login?" :list="['Forgot password?', 5]"/> -->
-  <Modal :header="header" :text="text" :list="list" :theme="theme" :toggleTheme="toggleTheme"/>
+  <div v-if="showModal">
+    <!-- <Modal header="Sign Up" text="Login?" :list="['Forgot password?', 5]"/> -->
+    <Modal
+      :header="header"
+      :text="text"
+      :list="list"
+      :theme="theme"
+      :toggleTheme="toggleTheme"
+      :toggleModal="toggleModal"
+    />
+  </div>
+  <button @click="toggleModal">Open Modal</button>
 </template>
 
 <script>
@@ -17,7 +27,8 @@ export default {
       header: 'Log In Modal',
       text: 'Forgot Password?',
       list: ['Register a new account?', 'LinkedIn'],
-      theme: 'day'
+      theme: 'day',
+      showModal: false
     }
   },
   methods: {
@@ -31,6 +42,9 @@ export default {
     toggleTheme() {
       if (this.theme === 'day') { this.theme = 'night' }
       else { this.theme = 'day' }
+    },
+    toggleModal() {
+      this.showModal = !this.showModal
     }
   },
   components: { Modal }
