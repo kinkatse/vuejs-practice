@@ -2,7 +2,7 @@
   <h1>{{ title }}</h1>
   <input type="text" ref="name">
   <button @click="handleClick">click me</button>
-  <div v-if="showModal">
+  <teleport to=".modals" v-if="showModal">
     <!-- <Modal header="Sign Up" text="Login?" :list="['Forgot password?', 5]"/> -->
     <!-- <Modal
       :header="header"
@@ -24,14 +24,14 @@
         <a href="#">More Info</a>
       </template>
     </Modal>
-  </div>
+  </teleport>
   <!-- <button @click="toggleModal">Open Modal</button> -->
   <!-- <button @click.right="toggleModal">Open Modal</button> -->
   <!-- <button @click.shift="toggleModal">Open Modal</button> -->
   <button @click.alt="toggleModal">Open Modal (alt)</button>
 
 
-  <div v-if="showModal2">
+  <teleport to=".modals" v-if="showModal2">
     <Modal :theme="theme" :toggleTheme="toggleTheme" @close="toggleModal2">
       <h2>This is the color modal</h2>
       <template v-slot:colors>
@@ -40,7 +40,7 @@
         <p>Blue</p>
       </template>
     </Modal>
-  </div>
+  </teleport>
 
   <button @click="toggleModal2">Open Color Modal</button>
 
