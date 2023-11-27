@@ -5,11 +5,22 @@
     <div class="backdrop" @click.self="closeModal">
         <!-- The below errored out because of :class needing "" around it so I need single quotes -->
         <!-- <div class="modal" :class="{ day: theme === "day", night: theme === "night"}"> -->
-        <div class="modal" :class="{ day: theme === 'day', night: theme === 'night'}">
+        <!-- <div class="modal" :class="{ day: theme === 'day', night: theme === 'night'}">
             <h1>{{ header }}</h1>
             <p>{{ text }}</p>
             <h3>{{ list[0] }}</h3>
             <h3>{{ list[1] }}</h3>
+            <button @click="toggleTheme">Change Theme</button>
+        </div> -->
+
+        <div class="modal" :class="{ day: theme === 'day', night: theme === 'night'}">
+            <!-- Slots useful in that we can pass different content and use them in
+            different spots. This might be useful for something like a login/signup modal -->
+            <!-- default content inside the slot only shows if there is no previous content -->
+            <slot>default</slot>
+            <div class="actions">
+                <slot name="links"></slot>
+            </div>
             <button @click="toggleTheme">Change Theme</button>
         </div>
     </div>

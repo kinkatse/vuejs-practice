@@ -4,7 +4,7 @@
   <button @click="handleClick">click me</button>
   <div v-if="showModal">
     <!-- <Modal header="Sign Up" text="Login?" :list="['Forgot password?', 5]"/> -->
-    <Modal
+    <!-- <Modal
       :header="header"
       :text="text"
       :list="list"
@@ -12,7 +12,18 @@
       :toggleTheme="toggleTheme"
       :toggleModal="toggleModal"
       @close="toggleModal"
-    />
+    /> -->
+    <Modal :theme="theme" :toggleTheme="toggleTheme" @close="toggleModal">
+      <!-- What is passed in here is considered a 'slot', for default slot-->
+      <h1>{{ header }}</h1>
+      <p>{{ text }}</p>
+
+      <!-- We can also have a named slot so we can refer to different ones using template -->
+      <template v-slot:links>
+        <a href="#">Sign Up Now</a>
+        <a href="#">More Info</a>
+      </template>
+    </Modal>
   </div>
   <!-- <button @click="toggleModal">Open Modal</button> -->
   <!-- <button @click.right="toggleModal">Open Modal</button> -->
