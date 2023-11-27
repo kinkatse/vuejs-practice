@@ -1,5 +1,6 @@
 <template>
-    <div class="backdrop" @click="toggleModal">
+    <!-- <div class="backdrop" @click="toggleModal"> -->
+    <div class="backdrop" @click="closeModal">
         <!-- The below errored out because of :class needing "" around it so I need single quotes -->
         <!-- <div class="modal" :class="{ day: theme === "day", night: theme === "night"}"> -->
         <div class="modal" :class="{ day: theme === 'day', night: theme === 'night'}">
@@ -14,7 +15,12 @@
 
 <script>
 export default {
-    props: ['header', 'text', 'list', 'theme', 'toggleTheme', 'toggleModal']
+    props: ['header', 'text', 'list', 'theme', 'toggleTheme', 'toggleModal'],
+    methods: {
+        closeModal() {
+            this.$emit('close')
+        }
+    }
 }
 </script>
 

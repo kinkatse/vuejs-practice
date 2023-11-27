@@ -11,6 +11,7 @@
       :theme="theme"
       :toggleTheme="toggleTheme"
       :toggleModal="toggleModal"
+      @close="toggleModal"
     />
   </div>
   <button @click="toggleModal">Open Modal</button>
