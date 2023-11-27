@@ -1,6 +1,8 @@
 <template>
     <!-- <div class="backdrop" @click="toggleModal"> -->
-    <div class="backdrop" @click="closeModal">
+    <!-- The .self event modifier is so that only clicking on this element,
+    not any element within, will trigger the click event listener -->
+    <div class="backdrop" @click.self="closeModal">
         <!-- The below errored out because of :class needing "" around it so I need single quotes -->
         <!-- <div class="modal" :class="{ day: theme === "day", night: theme === "night"}"> -->
         <div class="modal" :class="{ day: theme === 'day', night: theme === 'night'}">
@@ -18,6 +20,7 @@ export default {
     props: ['header', 'text', 'list', 'theme', 'toggleTheme', 'toggleModal'],
     methods: {
         closeModal() {
+            // This will target any close event listener (@close) and trigger that event
             this.$emit('close')
         }
     }
