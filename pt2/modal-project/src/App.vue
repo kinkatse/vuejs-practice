@@ -29,6 +29,21 @@
   <!-- <button @click.right="toggleModal">Open Modal</button> -->
   <!-- <button @click.shift="toggleModal">Open Modal</button> -->
   <button @click.alt="toggleModal">Open Modal (alt)</button>
+
+
+  <div v-if="showModal2">
+    <Modal :theme="theme" :toggleTheme="toggleTheme" @close="toggleModal2">
+      <h2>This is the color modal</h2>
+      <template v-slot:colors>
+        <p>Red</p>
+        <p>Green</p>
+        <p>Blue</p>
+      </template>
+    </Modal>
+  </div>
+
+  <button @click="toggleModal2">Open Color Modal</button>
+
 </template>
 
 <script>
@@ -43,7 +58,8 @@ export default {
       text: 'Forgot Password?',
       list: ['Register a new account?', 'LinkedIn'],
       theme: 'day',
-      showModal: false
+      showModal: false,
+      showModal2: false
     }
   },
   methods: {
@@ -60,6 +76,9 @@ export default {
     },
     toggleModal() {
       this.showModal = !this.showModal
+    },
+    toggleModal2() {
+      this.showModal2 = !this.showModal2
     }
   },
   components: { Modal }

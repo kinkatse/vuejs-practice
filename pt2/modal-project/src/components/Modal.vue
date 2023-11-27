@@ -20,6 +20,7 @@
             <slot>default</slot>
             <div class="actions">
                 <slot name="links"></slot>
+                <slot name="colors"></slot>
             </div>
             <button @click="toggleTheme">Change Theme</button>
         </div>
