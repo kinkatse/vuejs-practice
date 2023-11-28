@@ -2,6 +2,7 @@
   <div id="app">
     <h1>Ninja Reaction Timer</h1>
     <button @click="start" :disabled="isPlaying">play</button>
+    <button @click="end" :disabled="!isPlaying">stop</button>
     <Block v-if="isPlaying" :delay="delay"/>
   </div>
 </template>
@@ -23,6 +24,10 @@ export default {
       this.delay = 2000 + Math.random() * 5000
       this.isPlaying = true
       console.log(this.delay)
+    },
+    end() {
+      this.delay = null
+      this.isPlaying = false
     }
   }
 }
